@@ -1,0 +1,40 @@
+<mat-list>
+  <h3 matSubheader>Books
+    <button type="button" mat-icon-button (click)="addEditBook();">
+      <mat-icon>add</mat-icon>
+    </button>
+  </h3>
+  <div *ngFor="let book of books; let i = index">
+    <mat-list-item>
+      <mat-icon matListIcon>book</mat-icon>
+      <h4 matLine>{{book.title}}</h4>
+      <p matLine class="demo-2"> {{book.author.givenName}} </p>
+      <button type="button" mat-icon-button (click)="addEditBook(book, i);">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button type="button" mat-icon-button (click)="books.slice(i, 1);">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list>
+      <h3 matSubheader>Chapters
+        <button type="button" mat-icon-button (click)="addEditChapter(i);">
+          <mat-icon>add</mat-icon>
+        </button>
+      </h3>
+     
+      <div *ngFor="let chapter of book.chapters; let j = index">
+        <mat-list-item>
+          <h4 matLine>{{chapter.title}}
+          </h4>
+          <button type="button" mat-icon-button (click)="addEditChapter(i, chapter, j);">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button type="button" mat-icon-button (click)="book.chapters.slice(j, 1);">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </mat-list-item>
+      </div>
+    </mat-list>
+  </div>
+</mat-list>
